@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Miscellaneous\CancelledModels\**" />
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="Miscellaneous\CancelledModels\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Miscellaneous\CancelledModels\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Miscellaneous\Planning\CancelledRefineFeeTypeTable.txt" />
+    <None Remove="Miscellaneous\Planning\RefineFeeTypeTable.txt" />
+    <None Remove="Miscellaneous\Problems\CancelledProblemIssue1.txt" />
+    <None Remove="Miscellaneous\Problems\IdentityContextIssue.txt" />
+    <None Remove="Miscellaneous\Problems\ProblemIssue1.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Miscellaneous\Problems\IdentityContextIssue.txt" />
+  </ItemGroup>
+
+</Project>
