@@ -1,0 +1,72 @@
+﻿@page "/feelist"
+@inject FeePaymentServices service
+@inject IJSRuntime JSRuntime
+
+<h2>Fee Payments List</h2>
+<a class="btn btn-success" href="/fee-payments/create">Create Fee Payment</a>
+
+<!-- Print button to open the print-friendly version -->
+<button class="btn btn-primary" @onclick="printDetails">Print</button>
+
+<!-- Table for displaying fee payments -->
+<div id="printableTable">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Payment ID</th>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Total Amount</th>
+                <th>Amount Paid</th>
+                <th>Amount Remaining</th>
+                <th>Payment Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in data)
+            {
+                <tr>
+                    <td>@payment.FeePaymentId</td>
+                    <td>@payment.StudentId</td>
+                    <td>@payment.StudentName</td>
+                    <td>@String.Format("{0:C}", payment.TotalAmount)</td>
+                    <td>@String.Format("{0:C}", payment.AmountPaid)</td>
+                    <td>@String.Format("{0:C}", payment.AmountRemaining)</td>
+                    <td>@payment.PaymentDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private List<FeePayment> data = new List<FeePayment>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        data = await service.getFeePayments();
+        StateHasChanged();
+    }
+
+    void printDetails()
+    {
+        // Call JavaScript function to print
+        JSRuntime.InvokeVoidAsync("printDetailsFunction");
+    }
+}
+
+<!-- Add this script at the end of your Razor component -->
+<script>
+    function printDetailsFunction() {
+        var printableContent = document.getElementById('printableTable').innerHTML;
+        var originalContent = document.body.innerHTML;
+
+        document.body.innerHTML = printableContent;
+
+        window.print();
+
+        // Restore the original content after printing
+        document.body.innerHTML = originalContent;
+    }
+</script>

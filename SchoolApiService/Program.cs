@@ -16,6 +16,7 @@ namespace SchoolApiService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddCors();
 
             builder.Services.AddControllers();
 
@@ -129,6 +130,12 @@ namespace SchoolApiService
             app.UseAuthentication();
 
             app.UseAuthorization();
+            app.UseCors(opt => {
+                opt.AllowAnyHeader();
+                opt.AllowAnyMethod();
+                opt.AllowAnyOrigin();
+            });
+
 
             app.MapControllers();
 

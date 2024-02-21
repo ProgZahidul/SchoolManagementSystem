@@ -67,36 +67,65 @@ namespace SchoolApiService.Controllers
         }
 
 
-        // PUT: api/FeePayments/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFeePayment(int id, FeePayment feePayment)
+        public async Task<IActionResult> UpdateFeePayment(int id, [FromBody] FeePayment updatedFeePayment)
         {
-            if (id != feePayment.FeePaymentId)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            _context.Entry(feePayment).State = EntityState.Modified;
-
-            try
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FeePaymentExists(id))
+                try
                 {
-                    return NotFound();
+                    
+                    var existingFeePayment = await _context.dbsFeePayment
+                        .Include(fp => fp.FeeStructures)
+                        .Include(fp => fp.FeePaymentDetails)
+                        .FirstOrDefaultAsync(fp => fp.FeePaymentId == id);
+
+                    if (existingFeePayment == null)
+                    {
+                        return NotFound($"FeePayment with ID {id} not found.");
+                    }
+
+                    // Update properties of the existing fee payment
+                    existingFeePayment.StudentId = updatedFeePayment.StudentId;
+                    existingFeePayment.StudentName = updatedFeePayment.StudentName;
+                    existingFeePayment.TotalFeeAmount = updatedFeePayment.TotalFeeAmount;
+                    existingFeePayment.Discount = updatedFeePayment.Discount;
+                    existingFeePayment.AmountPaid = updatedFeePayment.AmountPaid;
+
+                    // Clear existing FeeStructure and FeePaymentDetails
+                    existingFeePayment.FeeStructures.Clear();
+                    existingFeePayment.FeePaymentDetails.Clear();
+
+                    await AttachFeeStructureAsync2(existingFeePayment, updatedFeePayment);
+
+                    await CalculateFeePaymentFieldsAsync(existingFeePayment);
+
+                    UpdateDueBalance(existingFeePayment);
+
+                    // Save changes to the database
+                    await _context.SaveChangesAsync();
+
+                    SaveFeePaymentDetails(existingFeePayment);
+
+                    transaction.Commit();
+
+                    return Ok(existingFeePayment);
                 }
-                else
+                catch (Exception ex)
                 {
-                    throw;
+                    Console.WriteLine($"Exception: {ex}");
+
+                    transaction.Rollback();
+                    return StatusCode(500, $"Internal Server Error: {ex.Message}");
                 }
             }
-
-            return NoContent();
         }
+
 
 
 
@@ -144,6 +173,15 @@ namespace SchoolApiService.Controllers
             {
                 feePayment.FeeStructures = await _context.dbsFeeStructure
                     .Where(fs => feePayment.FeeStructures.Select(f => f.FeeStructureId).Contains(fs.FeeStructureId))
+                    .ToListAsync();
+            }
+        }
+        private async Task AttachFeeStructureAsync2(FeePayment existingFeePayment, FeePayment updatedFeePayment)
+        {
+            if (updatedFeePayment.FeeStructures != null && updatedFeePayment.FeeStructures.Any())
+            {
+                existingFeePayment.FeeStructures = await _context.dbsFeeStructure
+                    .Where(fs => updatedFeePayment.FeeStructures.Select(f => f.FeeStructureId).Contains(fs.FeeStructureId))
                     .ToListAsync();
             }
         }

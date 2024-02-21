@@ -1,0 +1,74 @@
+DueBalances 
+===========
+---------Post---------
+{
+  "studentId": 0,
+  "dueBalanceAmount": 0
+}
+---------Put----------
+{
+  "dueBalanceId": 0,
+  "studentId": 0,
+  "dueBalanceAmount": 0
+}
+
+FeeTypes
+=========
+----------Post------------
+{
+  "typeName": ""
+}
+-----------Put------------
+{
+  "feeTypeId": 0,
+  "typeName": ""
+}
+
+FeeStructures
+=============
+-----------Post-------------
+{
+  "feeTypeId": 0,
+  "standardId": 0,
+  "monthly": true,
+  "yearly": false,
+  "feeAmount": 0
+}
+
+-------------Put--------------
+{
+"feeStructureId": 0,
+  "feeTypeId": 0,
+  "standardId": 0,
+  "monthly": true,
+  "yearly": false,
+  "feeAmount": 0
+}
+
+FeePayments
+============
+-------------Post---------------
+{
+  "studentId": 0,
+  "discount": 0,
+  "amountPaid": 0,
+
+  "feeStructures": [
+    {
+      "feeStructureId": 0
+    }
+  ]
+}
+--------------Put-----------------
+{
+ "feePaymentId": 0
+  "studentId": 0,
+  "discount": 0,
+  "amountPaid": 0
+
+  "feeStructures": [
+    {
+      "feeStructureId": 0
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+<div *ngIf="feePayment" class="container">
+  <h2>Fee Payment Details</h2>
+  <br />
+  <dl class="row">
+    <dt class="col-sm-3">Student ID:</dt>
+    <dd class="col-sm-9">{{ feePayment.studentId }}</dd>
+    <dt class="col-sm-3">Name:</dt>
+    <dd class="col-sm-9">{{ feePayment.studentName }}</dd>
+    <dt class="col-sm-3">Total Fee:</dt>
+    <dd class="col-sm-9">{{ feePayment.totalFeeAmount | currency:'USD':'symbol':'1.2-2' }}</dd>
+    <dt class="col-sm-3">After Discount:</dt>
+    <dd class="col-sm-9">{{ feePayment.amountAfterDiscount| currency:'USD':'symbol':'1.2-2' }}</dd>
+    <dt class="col-sm-3">Privious Due:</dt>
+    <dd class="col-sm-9">{{ feePayment.previousDue | currency:'USD':'symbol':'1.2-2' }}</dd>
+    <dt class="col-sm-3">Total Amount:</dt>
+    <dd class="col-sm-9">{{ feePayment.totalAmount | currency:'USD':'symbol':'1.2-2' }}</dd>
+    <dt class="col-sm-3">Amount Paid:</dt>
+    <dd class="col-sm-9">{{ feePayment.amountPaid | currency:'USD':'symbol':'1.2-2' }}</dd>
+    <dt class="col-sm-3">Due Amount:</dt>
+    <dd class="col-sm-9">{{ feePayment.amountRemaining | currency:'USD':'symbol':'1.2-2' }}</dd>
+    <!-- Add more fields as needed -->
+    <dt class="col-sm-3">Payment Date:</dt>
+    <dd class="col-sm-9">{{ feePayment.paymentDate | date:'short' }}</dd>
+  </dl>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Fee Type Name</th>
+        <th>Fee Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of feePayment.feePaymentDetails">
+        <td>{{ detail.feeTypeName }}</td>
+        <td>{{ detail.feeAmount | currency:'USD':'symbol':'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Add a print button -->
+  <button class="btn btn-primary" (click)="printDetails()">Print</button>
+</div>

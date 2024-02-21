@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolApp.DAL.SchoolContext;
 
@@ -11,9 +12,11 @@ using SchoolApp.DAL.SchoolContext;
 namespace SchoolApp.DAL.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    partial class SchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240223143201_Seedvaluadd")]
+    partial class Seedvaluadd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -532,12 +535,6 @@ namespace SchoolApp.DAL.Migrations
                     b.Property<int?>("StandardId")
                         .HasColumnType("int");
 
-                    b.Property<string>("StandardName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TypeName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool?>("Yearly")
                         .HasColumnType("bit");
 
@@ -559,8 +556,6 @@ namespace SchoolApp.DAL.Migrations
                             FeeTypeId = 1,
                             Monthly = true,
                             StandardId = 1,
-                            StandardName = "ClassOne",
-                            TypeName = "Tusion Fee",
                             Yearly = false
                         },
                         new
@@ -570,8 +565,6 @@ namespace SchoolApp.DAL.Migrations
                             FeeTypeId = 2,
                             Monthly = true,
                             StandardId = 1,
-                            StandardName = "ClassOne",
-                            TypeName = "Libaray Fee",
                             Yearly = false
                         },
                         new
@@ -581,8 +574,6 @@ namespace SchoolApp.DAL.Migrations
                             FeeTypeId = 1,
                             Monthly = true,
                             StandardId = 2,
-                            StandardName = "ClassTwo",
-                            TypeName = "Tusion Fee",
                             Yearly = false
                         },
                         new
@@ -592,8 +583,6 @@ namespace SchoolApp.DAL.Migrations
                             FeeTypeId = 2,
                             Monthly = true,
                             StandardId = 2,
-                            StandardName = "ClassTwo",
-                            TypeName = "Libaray Fee",
                             Yearly = false
                         },
                         new
@@ -603,8 +592,6 @@ namespace SchoolApp.DAL.Migrations
                             FeeTypeId = 1,
                             Monthly = true,
                             StandardId = 3,
-                            StandardName = "ClassThree",
-                            TypeName = "Tusion Fee",
                             Yearly = false
                         },
                         new
@@ -614,8 +601,6 @@ namespace SchoolApp.DAL.Migrations
                             FeeTypeId = 2,
                             Monthly = true,
                             StandardId = 3,
-                            StandardName = "ClassThree",
-                            TypeName = "Libaray Fee",
                             Yearly = false
                         },
                         new
@@ -625,8 +610,6 @@ namespace SchoolApp.DAL.Migrations
                             FeeTypeId = 3,
                             Monthly = true,
                             StandardId = 1,
-                            StandardName = "ClassOne",
-                            TypeName = "Transfort Fee",
                             Yearly = false
                         });
                 });

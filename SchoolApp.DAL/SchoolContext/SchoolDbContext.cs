@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SchoolApp.Models.DataModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,7 +67,7 @@ namespace SchoolApp.DAL.SchoolContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+           
 
             modelBuilder.Entity<IdentityUserLogin<string>>()
             .HasKey(u => new { u.UserId, u.LoginProvider, u.ProviderKey });
@@ -108,6 +109,256 @@ namespace SchoolApp.DAL.SchoolContext
         .HasIndex(s => s.EnrollmentNo)
         .IsUnique();
 
+
+
+            modelBuilder.Entity<Standard>().HasData(new Standard[]
+
+           {
+                new Standard
+                {
+                    StandardId=1,
+                    StandardName="ClassOne"
+                },
+                new Standard
+                {
+                    StandardId=2,
+                    StandardName="ClassTwo"
+                },
+                new Standard
+                {
+                    StandardId=3,
+                    StandardName="ClassThree"
+                }
+
+           });
+
+            modelBuilder.Entity<Student>().HasData(new Student[]
+            {
+                new Student
+                {
+                    StudentId=1,
+                    StudentName= "Hasan Mahmud",
+                     StudentDOB = DateTime.ParseExact("01-01-2000", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                    StandardId=1
+                },
+                new Student
+                {
+                    StudentId=2,
+                    StudentName= "Salman Khan",
+                     StudentDOB = DateTime.ParseExact("01-01-2000", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                    StandardId=1
+                },
+                new Student
+                {
+                    StudentId=3,
+                    StudentName= "Rakib Kibriya",
+                     StudentDOB = DateTime.ParseExact("01-01-2000", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                    StandardId=2
+                },
+                new Student
+                {
+                    StudentId=4,
+                    StudentName= "Jalal Ahmed",
+                     StudentDOB = DateTime.ParseExact("01-01-2000", "dd-MM-yyyy", CultureInfo.InvariantCulture),
+                    StandardId=2
+                }
+
+            });
+
+            modelBuilder.Entity<FeeType>().HasData(new FeeType[]
+            {
+                new FeeType
+                {
+                    FeeTypeId=1,
+                    TypeName="Tusion Fee",
+                },
+                new FeeType
+                {
+                    FeeTypeId=2,
+                    TypeName="Libaray Fee",
+                },
+                new FeeType
+                {
+                    FeeTypeId=3,
+                    TypeName="Transfort Fee",
+                }
+            });
+
+            modelBuilder.Entity<FeeStructure>().HasData(new FeeStructure[]
+           {
+                new FeeStructure
+                {
+                    FeeStructureId=1,
+                    StandardId=1,
+                    StandardName="ClassOne",
+                    FeeTypeId=1,
+                    TypeName="Tusion Fee",
+                    Monthly=true,
+                    Yearly=false,
+                    FeeAmount=2000
+                },
+                new FeeStructure
+                {
+                    FeeStructureId=2,
+                    StandardId=1,
+                    StandardName="ClassOne",
+                    FeeTypeId=2,
+                    TypeName="Libaray Fee",
+                    Monthly=true,
+                    Yearly=false,
+                    FeeAmount=400
+                },
+                new FeeStructure
+                {
+                    FeeStructureId=3,
+                    StandardId=2,
+                    StandardName="ClassTwo",
+                    FeeTypeId=1,
+                    TypeName="Tusion Fee",
+                    Monthly=true,
+                    Yearly=false,
+                    FeeAmount=2500
+                },
+                new FeeStructure
+                {
+                    FeeStructureId=4,
+                    StandardId=2,
+                    StandardName="ClassTwo",
+                    FeeTypeId=2,
+                    TypeName="Libaray Fee",
+                    Monthly=true,
+                    Yearly=false,
+                    FeeAmount=500
+                },
+                new FeeStructure
+                {
+                    FeeStructureId=5,
+                    StandardId=3,
+                    StandardName="ClassThree",
+                    FeeTypeId=1,
+                    TypeName="Tusion Fee",
+                    Monthly=true,
+                    Yearly=false,
+                    FeeAmount=2500
+                },
+                new FeeStructure
+                {
+                    FeeStructureId=6,
+                    StandardId=3,
+                    StandardName="ClassThree",
+                    FeeTypeId=2,
+                     TypeName="Libaray Fee",
+                    Monthly=true,
+                    Yearly=false,
+                    FeeAmount=500
+                },
+                new FeeStructure
+                {
+                    FeeStructureId=7,
+                    StandardId=1,
+                    StandardName="ClassOne",
+                    FeeTypeId=3,
+                    TypeName="Transfort Fee",
+                    Monthly=true,
+                    Yearly=false,
+                    FeeAmount=600
+                }
+
+           });
+            modelBuilder.Entity<FeePaymentDetail>().HasData(new FeePaymentDetail[]
+            {
+                new FeePaymentDetail
+                {
+                    FeePaymentDetailId = 1,
+                    FeePaymentId = 1,
+                    FeeTypeName = "Tusion Fee",
+                    FeeAmount = 2000
+                },
+                new FeePaymentDetail
+                {
+                    FeePaymentDetailId = 2,
+                    FeePaymentId = 1,
+                    FeeTypeName = "Libaray Fee",
+                    FeeAmount = 400
+                },
+                new FeePaymentDetail
+                {
+                    FeePaymentDetailId = 3,
+                    FeePaymentId = 2,
+                    FeeTypeName = "Tusion Fee",
+                    FeeAmount = 2000
+                }, new FeePaymentDetail
+                {
+                    FeePaymentDetailId = 4,
+                    FeePaymentId = 2,
+                    FeeTypeName = "Libaray Fee",
+                    FeeAmount = 400
+                },
+                 new FeePaymentDetail
+                {
+                    FeePaymentDetailId = 5,
+                    FeePaymentId = 3,
+                    FeeTypeName = "Tusion Fee",
+                    FeeAmount = 2500
+                }, new FeePaymentDetail
+                {
+                    FeePaymentDetailId = 6,
+                    FeePaymentId = 3,
+                    FeeTypeName = "Libaray Fee",
+                    FeeAmount = 500
+                }
+
+
+
+            });
+
+            modelBuilder.Entity<FeePayment>().HasData(new FeePayment[]
+            {
+                new FeePayment
+                {
+                FeePaymentId = 1,
+                StudentId = 1,
+                StudentName="Hasan Mahmud",
+                TotalFeeAmount = 2400,
+                Discount = 5,
+                AmountAfterDiscount = 2280,
+                PreviousDue = 0,
+                TotalAmount = 2280,
+                AmountPaid = 3000,
+                AmountRemaining = -720,
+                PaymentDate = DateTime.Parse("2024-02-14T10:42:22.787")
+                },
+                new FeePayment
+                {
+                FeePaymentId = 2,
+                StudentName="Salman Khan",
+                StudentId = 2,
+                TotalFeeAmount = 2400,
+                Discount = 5,
+                AmountAfterDiscount = 2280,
+                PreviousDue = 0,
+                TotalAmount = 2280,
+                AmountPaid = 500,
+                AmountRemaining = 1780,
+                PaymentDate = DateTime.Parse("2024-02-14T10:42:22.787")
+                },
+                 new FeePayment
+                {
+                FeePaymentId = 3,
+                StudentId = 3,
+                StudentName="Rakib Kibriya",
+                TotalFeeAmount = 2400,
+                Discount = 5,
+                AmountAfterDiscount = 2280,
+                PreviousDue = 0,
+                TotalAmount = 2280,
+                AmountPaid = 500,
+                AmountRemaining = 1780,
+                PaymentDate = DateTime.Parse("2024-02-14T10:42:22.787")
+                }
+
+            });
+            base.OnModelCreating(modelBuilder);
 
         }
     }

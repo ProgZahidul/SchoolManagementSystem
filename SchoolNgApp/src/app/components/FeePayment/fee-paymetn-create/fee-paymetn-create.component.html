@@ -1,0 +1,57 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="text-center">Create Fee Payment</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="OnSubmit()" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+          <label for="studentId" class="form-label">Student ID:</label>
+          <input type="number" id="studentId" name="studentId" class="form-control" [(ngModel)]="model.studentId" required>
+          <div class="invalid-feedback">Student ID is required.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="discount" class="form-label">Discount (%):</label>
+          <input type="number" id="discount" name="discount" class="form-control" [(ngModel)]="model.discount" required>
+          <div class="invalid-feedback">Discount is required.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="amountPaid" class="form-label">Amount Paid:</label>
+          <input type="number" id="amountPaid" name="amountPaid" class="form-control" [(ngModel)]="model.amountPaid" required>
+          <div class="invalid-feedback">Amount Paid is required.</div>
+        </div>
+
+        <!-- Add a dropdown to select standardId -->
+        <div class="mb-3">
+          <label for="standardId" class="form-label">Select Standard:</label>
+          <select [(ngModel)]="selectedStandardId" name="standardId" class="form-control">
+            <option value="" disabled>Select Standard</option>
+            <!-- Add options for each standard -->
+            <option *ngFor="let standard of availableStandards" [ngValue]="standard.id">
+              {{ standard.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Fee Structures dropdown filtered by standardId -->
+        <div class="mb-3">
+          <label for="feeStructures" class="form-label">Fee Structures (Multiple):</label>
+          <select multiple [(ngModel)]="model.feeStructures" name="feeStructures" class="form-control">
+            <option *ngFor="let structure of filterFeeStructures()" [ngValue]="structure">
+              Fee Structure ID: {{ structure.feeStructureId }} - Type: {{ structure.typeName }} - Class: {{ structure.standardName }} - {{ structure.standardId }}
+            </option>
+          </select>
+          <div class="invalid-feedback">At least one Fee Structure must be selected.</div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

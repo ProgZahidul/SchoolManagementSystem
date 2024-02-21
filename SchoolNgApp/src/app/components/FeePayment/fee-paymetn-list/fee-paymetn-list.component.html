@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2>Fee Payments List</h2>
+  <a class="btn btn-success" routerLink="/fee-payments/create">Create Fee Payment</a>
+  <table class="table table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Payment ID</th>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Total Amount</th>
+        <th>Amount Paid</th>
+        <th>Amount Remaining</th>
+        <th>Payment Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of feePayments">
+        <td>{{ payment.feePaymentId }}</td>
+        <td>{{ payment.studentId }}</td>
+        <td>{{ payment.studentName }}</td>
+        <td>{{ payment.totalAmount | currency }}</td>
+        <td>{{ payment.amountPaid | currency }}</td>
+        <td>{{ payment.amountRemaining | currency }}</td>
+        <td>{{ payment.paymentDate | date }}</td>
+        <td>
+          <a class="btn btn-primary" routerLink="/fee-payments/{{ payment.feePaymentId }}">Details</a>
+          <a class="btn btn-primary" [routerLink]="['/fee-payments', payment.feePaymentId, 'edit']">Edit</a>
+          <button (click)="deleteFeePayment(payment.feePaymentId)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="printDetails()">Print</button>
+</div>
