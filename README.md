@@ -14,15 +14,10 @@ Student Records Management: Centralize student information, including academic r
 Technology Stack:
 
 Frontend: Angular (Version 17), Blazor
-
 Backend: .NET 8, ASP.NET Core Web API
-
 Database: MSSQL, Entity Framework Core
-
 Cross-platform Development: MAUI for mobile platforms
-
 Version Control: GitHub
-
 How to Contribute:
 
 Fork the repository.
