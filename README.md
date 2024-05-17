@@ -1,63 +1,45 @@
-# SchoolManagementSystem
-This repository contains a comprehensive School Management System developed as a cross-platform application using a stack of technologies including .NET, C#, Angular, and more. The project serves as a practical application of skills acquired through a 1.2-year course on Building Cross-Platform Apps Using Microsoft .NET C#. The aim was to implement ERP-level functionality covering all aspects of school administration.
-# Technologies Used
+# School Management System
 
-Backend
+Welcome to the School Management System repository! This project is a comprehensive application designed to manage various aspects of school administration. It was developed as a cross-platform solution using a stack of technologies including .NET, C#, Angular, and more. The aim of this project is to provide ERP-level functionality catering to the needs of school management.
 
-.NET 8
-ASP.NET Core Web API
-Entity Framework Core
-JWT Token-based Authentication and Authorization
-Frontend
+## Overview
 
-Angular 17
-Syncfusion Angular for enhanced UI/UX
-FastReport for reporting
-Main Features
-Core Modules
+The School Management System serves as a practical application of skills acquired through a 1.2-year course on Building Cross-Platform Apps Using Microsoft .NET C#. It covers a wide range of functionalities essential for efficient school administration.
 
-Attendance Tracking
-Exam Schedule Management
-Marks Entry and Grading
-Staff and Student Management
-Subject Management
-Payment Handling
-Dashboard for comprehensive data visualization
-Security Implementation
+## Technologies Used
 
-Identity and Access Control
-Registration and Login functionalities secured with JWT tokens on both frontend (Angular) and backend (API).
-# Key Features:
+### Backend
+- **.NET 8**: Provides the foundation for the backend development.
+- **ASP.NET Core Web API**: Enables building robust and scalable APIs.
+- **Entity Framework Core**: Facilitates object-relational mapping (ORM) for database interactions.
+- **JWT Token-based Authentication and Authorization**: Ensures secure access to the system.
 
-Attendance Tracking: Easily monitor student attendance and generate reports.
+### Frontend
+- **Angular 17**: Empowers the frontend with a modern and dynamic user interface.
+- **Syncfusion Angular**: Enhances UI/UX with feature-rich components.
+- **FastReport**: Offers reporting capabilities for generating comprehensive reports.
 
-Department Management: Efficiently manage different departments within the institution.
+## Getting Started
 
-Fee Structuring and Payment: Simplify fee management processes and facilitate payment tracking.
+To get started with the School Management System, follow these steps:
 
-Exam Scheduling: Schedule exams effortlessly and manage exam-related tasks.
+1. Clone this repository to your local machine.
+2. Set up the backend by navigating to the `backend` directory and following the instructions in the README file.
+3. Set up the frontend by navigating to the `frontend` directory and following the instructions in the README file.
+4. Once both the backend and frontend are set up, you can start using the School Management System by accessing it through your web browser.
 
-Staff Management: Maintain records of staff members, including their experience and salaries.
+## Contributions
 
-Student Records Management: Centralize student information, including academic records and personal details.
+Contributions to the School Management System project are welcome! Whether you find a bug, have a feature request, or would like to contribute code, please feel free to submit a pull request. For major changes, please open an issue first to discuss the proposed changes.
 
-# Technology Stack:
+## License
 
-Frontend: Angular (Version 17), Blazor
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the terms of the license.
 
-Backend: .NET 8, ASP.NET Core Web API
+## Acknowledgements
 
-Database: MSSQL, Entity Framework Core
+Special thanks to all contributors and the open-source community for their valuable contributions and support.
 
-Cross-platform Development: MAUI for mobile platforms
+---
 
-Version Control: GitHub
-
-# How to Contribute:
-
-Fork the repository.
-Clone the forked repository to your local machine.
-Create a new branch for your feature or bug fix: git checkout -b feature/my-feature or git checkout -b bugfix/my-bugfix.
-Make your changes and commit them: git commit -am 'Add new feature'.
-Push your changes to your forked repository: git push origin feature/my-feature.
-Submit a pull request.
+Feel free to reach out if you have any questions or need further assistance!
