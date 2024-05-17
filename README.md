@@ -9,7 +9,7 @@ The School Management System serves as a practical application of skills acquire
 ## Technologies Used
 
 ### Backend
-- **.NET 8**: Provides the foundation for the backend development.
+- **.NET 8**: Provides the foundation for backend development.
 - **ASP.NET Core Web API**: Enables building robust and scalable APIs.
 - **Entity Framework Core**: Facilitates object-relational mapping (ORM) for database interactions.
 - **JWT Token-based Authentication and Authorization**: Ensures secure access to the system.
@@ -19,27 +19,45 @@ The School Management System serves as a practical application of skills acquire
 - **Syncfusion Angular**: Enhances UI/UX with feature-rich components.
 - **FastReport**: Offers reporting capabilities for generating comprehensive reports.
 
-## Getting Started
+## Main Features
 
-To get started with the School Management System, follow these steps:
+- Core Modules:
+  - Attendance Tracking
+  - Exam Schedule Management
+  - Marks Entry and Grading
+  - Staff and Student Management
+  - Subject Management
+  - Payment Handling
+  - Dashboard for comprehensive data visualization
+- Security Implementation:
+  - Identity and Access Control
+  - Registration and Login functionalities secured with JWT tokens on both frontend (Angular) and backend (API).
 
-1. Clone this repository to your local machine.
-2. Set up the backend by navigating to the `backend` directory and following the instructions in the README file.
-3. Set up the frontend by navigating to the `frontend` directory and following the instructions in the README file.
-4. Once both the backend and frontend are set up, you can start using the School Management System by accessing it through your web browser.
+## Collaborators
 
-## Contributions
+This project was a collaborative effort involving:
 
-Contributions to the School Management System project are welcome! Whether you find a bug, have a feature request, or would like to contribute code, please feel free to submit a pull request. For major changes, please open an issue first to discuss the proposed changes.
+- [Sayed Zahidul Hoque](https://github.com/ProgZahidul)
+- [Mohammad Mazharul Islam](https://github.com/Mazharul-DotnetDev)
+- [Tamzid-Ahammad](https://github.com/Tamzid-Ahammad)
+- [Nayem Sharif](https://github.com/Coder-Nayem)
 
-## License
+Feel free to click on their names to visit their GitHub profiles!
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code as per the terms of the license.
+## Development Tools
 
-## Acknowledgements
+- Visual Studio 2022
+- SQL Server Management Studio 2019
+- SQL Server 2022
+- Postman for API testing
+- Swagger for API documentation
+- FastReport for enhanced reporting capabilities
 
-Special thanks to all contributors and the open-source community for their valuable contributions and support.
+## How to Run
 
----
+1. Build Solution: Open the project in Visual Studio 2022 and build the solution.
+2. Database Setup: Use SQL Server Management Studio 2019 to update the database by running necessary migrations (Update-Database).
+3. Angular Setup: Navigate to the Angular project directory, install node modules (npm install), and build the Angular application.
+4. Run Projects: Start both the API and Angular projects to launch the School Management System.
 
 Feel free to reach out if you have any questions or need further assistance!
