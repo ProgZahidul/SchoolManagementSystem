@@ -99,6 +99,9 @@ import { SubjectEditComponent } from './Components/subject/subject-edit/subject-
 import { SubjectAddComponent } from './Components/subject/subject-add/subject-add.component';
 import { ListStudentComponent } from './Components/student/student-list/student-list.component';
 import { HomepageComponent } from './Components/homepage/homepage.component';
+import { RegistrationComponent } from './Authentication/SecurityComponents/registration/registration.component';
+import { AuthService } from './Authentication/SecurityModels/auth.service';
+/*import { RegistrationComponent } from './Authenticaton/SecurityComponents/registration/registration.component';*/
 
 
 
@@ -109,8 +112,8 @@ import { HomepageComponent } from './Components/homepage/homepage.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MarksListComponent, MarksAddComponent, MarksEditComponent, MarksDeleteComponent, AttendanceListComponent, AttendanceAddComponent, FeeListComponent, FeeEditComponent, FeeCreateComponent, FeetypeListComponent, FeetypeEditComponent, FeetypeCreateComponent, MonthlypaymentListComponent, MonthlypaymentEditComponent, MonthlypaymentDetailsComponent, MonthlypaymentCreatComponent, StaffListComponent, DepartmentListComponent, StaffSalaryListComponent, StaffCreateComponent, StaffEditComponent, ExamtypeListComponent, ExamtypeAddComponent, ExamtypeEditComponent, StaffDetailsComponent, StaffDeleteComponent, DepartmentEditComponent, DepartmentCreateComponent, OtherpaymentListComponent, OtherpaymentEditComponent, OtherpaymentDetailsComponent, OtherpaymentCreatComponent, PaymentDetailsPerStudentComponent, StandardListComponent, StandardEditComponent, StandardCreateComponent, ConfirmationDialogComponent, StaffSalaryCreateComponent, StaffSalaryEditComponent, MarksnewEntryListComponent, MarkEntryCreateComponent, MarkEntryDetailsComponent, MarksnewEntryDeleteComponent, HeaderComponent, SidebarComponent, DashboardComponent, MainComponent, ExamScheduleStandardsListComponent, ExamScheduleStandardsEditComponent, ExamScheduleStandardsCreateComponent, ExamscheduleListComponent, ExamscheduleEditComponent, ExamscheduleAddComponent, ListStudentComponent, StudentEditComponent, StudentDetailsComponent, StudentAddComponent, SubjectListComponent, SubjectEditComponent, SubjectAddComponent, HomepageComponent
-    
+    MarksListComponent, MarksAddComponent, MarksEditComponent, MarksDeleteComponent, AttendanceListComponent, AttendanceAddComponent, FeeListComponent, FeeEditComponent, FeeCreateComponent, FeetypeListComponent, FeetypeEditComponent, FeetypeCreateComponent, MonthlypaymentListComponent, MonthlypaymentEditComponent, MonthlypaymentDetailsComponent, MonthlypaymentCreatComponent, StaffListComponent, DepartmentListComponent, StaffSalaryListComponent, StaffCreateComponent, StaffEditComponent, ExamtypeListComponent, ExamtypeAddComponent, ExamtypeEditComponent, StaffDetailsComponent, StaffDeleteComponent, DepartmentEditComponent, DepartmentCreateComponent, OtherpaymentListComponent, OtherpaymentEditComponent, OtherpaymentDetailsComponent, OtherpaymentCreatComponent, PaymentDetailsPerStudentComponent, StandardListComponent, StandardEditComponent, StandardCreateComponent, ConfirmationDialogComponent, StaffSalaryCreateComponent, StaffSalaryEditComponent, MarksnewEntryListComponent, MarkEntryCreateComponent, MarkEntryDetailsComponent, MarksnewEntryDeleteComponent, HeaderComponent, SidebarComponent, DashboardComponent, MainComponent, ExamScheduleStandardsListComponent, ExamScheduleStandardsEditComponent, ExamScheduleStandardsCreateComponent, ExamscheduleListComponent, ExamscheduleEditComponent, ExamscheduleAddComponent, ListStudentComponent, StudentEditComponent, StudentDetailsComponent, StudentAddComponent, SubjectListComponent, SubjectEditComponent, SubjectAddComponent, HomepageComponent, RegistrationComponent
+
   ],
   imports: [
     BrowserModule,
@@ -131,9 +134,11 @@ import { HomepageComponent } from './Components/homepage/homepage.component';
     MatTableModule
 
 
-        
+
   ],
-  providers: [PageService, SortService, FilterService, GroupService, EditService, AggregateService,
+  providers: [
+    AuthService,
+    PageService, SortService, FilterService, GroupService, EditService, AggregateService,
     ColumnChooserService, ColumnMenuService, ResizeService, ReorderService, SearchService,
     SelectionService, ExcelExportService, PdfExportService, DetailRowService, ToolbarService,
     provideAnimationsAsync(),

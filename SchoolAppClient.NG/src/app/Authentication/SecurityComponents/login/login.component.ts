@@ -39,7 +39,11 @@ export class LoginComponent {
       .login(this.model)
       .subscribe(() => {
         alert('Login success!');
-        this.router.navigate(['/']);
+        //this.router.navigate(['/']);
+        if (!!localStorage.getItem("redirectTo"))
+          window.location.href = '/' + localStorage.getItem("redirectTo");
+        else
+          window.location.href = '/';
       });
   }
 }

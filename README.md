@@ -41,7 +41,8 @@ This project was a collaborative effort involving:
 - [Mohammad Mazharul Islam](https://github.com/Mazharul-DotnetDev)
 - [Tamzid-Ahammad](https://github.com/Tamzid-Ahammad)
 - [Nayem Sharif](https://github.com/Coder-Nayem)
-- [S-M-LUTFAR-RAHMAN] (#)
+- [S-M-LUTFAR-RAHMAN](https://github.com/S-M-LUTFAR-RAHMAN)
+
 
 
 ## Development Tools

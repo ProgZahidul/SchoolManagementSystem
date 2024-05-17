@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, tap } from "rxjs";
 import { AuthRequest } from "./auth-request";
 import { AuthResponse } from "./auth-response";
 import { jwtDecode } from "jwt-decode";
+import { RegistrationRequest } from "./RegistrationRequest";
 
 const api: string = "https://localhost:7225/api/users/";
 
@@ -28,10 +29,16 @@ export class AuthService {
         tap((response: AuthResponse) => {
           console.info(response);
           this.doLoginUser(response);
-          this.router.navigate(['/']);
+
         })
       );
   }
+
+  register(user: RegistrationRequest): Observable<any> {
+    return this.http.post(api + 'register', user);
+  }
+
+
 
   private doLoginUser(data: AuthResponse) {
     this.loggedUser = data.email;
@@ -50,13 +57,16 @@ export class AuthService {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem(this.JWT_USER);
     this.isAuthenticatedSubject.next(false);
-    this.router.navigate(['/']);
+    //this.router.navigate(['/']);
+    //window.location.href = '/';
+    window.location.href = '/login';
+    localStorage.removeItem("redirectTo");
   }
 
   getCurrentAuthUser(): AuthResponse {
     var user!: AuthResponse;
     if (localStorage.getItem(this.JWT_USER))
-     user= JSON.parse(localStorage.getItem(this.JWT_USER) ?? "");
+      user = JSON.parse(localStorage.getItem(this.JWT_USER) ?? "");
     return user;
   }
 
